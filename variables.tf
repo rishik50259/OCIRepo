@@ -18,26 +18,14 @@ variable "versn" {
   type        = string
   description = "provider version"
 }
-variable "tenancyocid" {
-  type        = string
-  description = "The OCID of the tenancy."
-}
-variable "userocid" {
-  type        = string
-  description = "The OCID of the user."
-}
-variable "finger_print" {
-  type        = string
-  description = "The fingerprint of the API key."
-}
+variable "tenancyocid" {}
+variable "userocid" {}
+variable "finger_print" {}
 variable "rgn" {
   type        = string
   description = "The region where the resources will be created."
 }
-variable "privatekeypath" {
-  type        = string
-  description = "The path to the private key file."
-}
+variable "privatekeypath" {}
 variable "privatesubnetcidrblock" {
   type        = string
   description = "The CIDR block for the private subnet."
