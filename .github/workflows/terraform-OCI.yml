@@ -1,25 +1,30 @@
-name: Terraform OCI Yaml
-on: 
- workflow_dispatch:
- jobs:
-   terraform:
-     runs-on: ubuntu-latest
+name: Terraform OCI Workflow
 
-     steps:
-       - name: checkout repository_dispatch
-         uses: actions/checkout@v3
-       - name: Set up terraform
-         uses: hashicorp/setup-terraform@v2
-       - name: Create OCI private key file
-         run: |
-               echo "${{secrets.PRIVATEKEY}}" >> APIPrivateKey.pem
-               chomd 600 APIPrivateKey.pem
-       - name: Terraform Init
-         run: terraform init
-       - name: Terraform Plan
+on:
+  workflow_dispatch:
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Create OCI private key file
+        run: |
+          echo "${{ secrets.PRIVATEKEY }}" > APIPrivateKey.pem
+          chmod 600 APIPrivateKey.pem
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Plan
         run: terraform plan \
-          -var "tenancyocid=${{ secrets.TENANCYOCID }}" \
-          -var "userocid=${{ secrets.USEROCID }}" \
-          -var "finger_print=${{ secrets.FINGER_PRINT }}" \
-          -var "private_key_path=APIPrivateKey.pem" \
-          
+          -var "tenancy_ocid=${{ secrets.TENANCYOCID }}" \
+          -var "user_ocid=${{ secrets.USEROCID }}" \
+          -var "fingerprint=${{ secrets.FINGER_PRINT }}" \
+          -var "private_key_path=APIPrivateKey.pem"
