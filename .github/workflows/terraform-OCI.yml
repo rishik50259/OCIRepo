@@ -19,6 +19,9 @@ jobs:
           echo "${{ secrets.PRIVATEKEY }}" > APIPrivateKey.pem
           chmod 600 APIPrivateKey.pem
 
+      - name: Terraform Validate
+        run: terraform validate
+
       - name: Terraform Init
         run: terraform init
 
