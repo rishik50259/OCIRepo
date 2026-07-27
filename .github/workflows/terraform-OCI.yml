@@ -21,14 +21,14 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
-      
+
       - name: Terraform Validate
         run: terraform validate
 
-      
       - name: Terraform Plan
-        run: terraform plan \
-          -var "tenancyocid=${{ secrets.TENANCYOCID }}" \
-          -var "userocid=${{ secrets.USEROCID }}" \
-          -var "finger_print=${{ secrets.FINGER_PRINT }}" \
-          -var "privatekeypath=APIPrivateKey.pem"
+        run: |
+          terraform plan \
+            -var "tenancyocid=${{ secrets.TENANCYOCID }}" \
+            -var "userocid=${{ secrets.USEROCID }}" \
+            -var "finger_print=${{ secrets.FINGER_PRINT }}" \
+            -var "privatekeypath=APIPrivateKey.pem"
