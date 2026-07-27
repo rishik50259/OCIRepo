@@ -1,0 +1,7 @@
+tenancyocid    = "ocid1.tenancy.oc1..aaaaaaaaoeu2h6r7qit2k5obrdfciegpfugaw44mljatziohfufbreco2pmq"
+userocid       = "ocid1.user.oc1..aaaaaaaa2sfiea5dfhln6u5srmyufrv2jlnoi2l2ghkphuil7fmdszzuutka"
+fingerprint    = "01:37:2f:2a:b1:74:89:63:44:65:92:b3:2a:32:68:57"
+privatekeypath = "D:\\TerraformPractice\\APIPrivateKey.pem"
+compartmentid  = "ocid1.compartment.oc1..aaaaaaaal6kykme7rkdcrlbxljhen3acjlgymrd7l7x7k3ebjeggyadpbhoq"
+vcnname        = "vcn1"
+vcncidrblock   = "192.168.0.0/16"
