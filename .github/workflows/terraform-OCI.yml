@@ -30,4 +30,4 @@ jobs:
           -var "tenancyocid=${{ secrets.TENANCYOCID }}" \
           -var "userocid=${{ secrets.USEROCID }}" \
           -var "finger_print=${{ secrets.FINGER_PRINT }}" \
-          -var "privatekey_path=APIPrivateKey.pem"
+          -var "privatekeypath=APIPrivateKey.pem"
