@@ -72,7 +72,7 @@ jobs:
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
         run: |
-          terraform apply -auto-approve \
+          # terraform apply -auto-approve \
             -var "tenancyocid=${{ secrets.TENANCYOCID }}" \
             -var "userocid=${{ secrets.USEROCID }}" \
             -var "finger_print=${{ secrets.FINGER_PRINT }}" \
