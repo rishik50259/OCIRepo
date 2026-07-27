@@ -18,7 +18,39 @@ jobs:
         run: |
           echo "${{ secrets.PRIVATEKEY }}" > APIPrivateKey.pem
           chmod 600 APIPrivateKey.pem
+      
+      - name: Install OCI CLI
+        run: |
+          pip install oci-cli
 
+      - name: Ensure Terraform State Bucket Exists
+        run: |
+          BUCKET_NAME="terraform-state"
+          NAMESPACE="${{ secrets.OCI_NAMESPACE }}"
+          COMPARTMENT_ID="${{ secrets.COMPARTMENT_OCID }}"
+
+          echo "Checking if bucket $BUCKET_NAME exists..."
+
+          EXISTS=$(oci os bucket list \
+            --namespace $NAMESPACE \
+            --compartment-id $COMPARTMENT_ID \
+            --query "data[?name=='$BUCKET_NAME'] | length(@)" \
+            --raw-output)
+
+          if [ "$EXISTS" -eq 0 ]; then
+            echo "Bucket not found. Creating bucket: $BUCKET_NAME"
+            oci os bucket create \
+              --namespace $NAMESPACE \
+              --compartment-id $COMPARTMENT_ID \
+              --name $BUCKET_NAME
+          else
+            echo "Bucket already exists."
+          fi
+
+
+      
+      
+      
       - name: Terraform Init
         run: terraform init
 
@@ -27,6 +59,7 @@ jobs:
 
       - name: Terraform Validate
         run: terraform validate
+
 
       - name: Terraform Plan
         run: |
