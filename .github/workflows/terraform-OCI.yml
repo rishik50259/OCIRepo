@@ -24,7 +24,7 @@ jobs:
 
       - name: Terraform Plan
         run: terraform plan \
-          -var "tenancy_ocid=${{ secrets.TENANCYOCID }}" \
-          -var "user_ocid=${{ secrets.USEROCID }}" \
-          -var "fingerprint=${{ secrets.FINGER_PRINT }}" \
-          -var "private_key_path=APIPrivateKey.pem"
+          -var "tenancyocid=${{ secrets.TENANCYOCID }}" \
+          -var "userocid=${{ secrets.USEROCID }}" \
+          -var "finger_print=${{ secrets.FINGER_PRINT }}" \
+          -var "privatekey_path=APIPrivateKey.pem"
