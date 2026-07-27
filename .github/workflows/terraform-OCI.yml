@@ -45,3 +45,7 @@ jobs:
             -var "finger_print=${{ secrets.FINGER_PRINT }}" \
             -var "privatekeypath=APIPrivateKey.pem"
 
+      - name: Terraform Destroy
+        run: |
+          terraform destroy -auto-approve 
+
